@@ -381,19 +381,40 @@
 .addToCartBtn {
   width: 100%;
   padding: 18px;
-  background-color: #1a1a1a;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  border-radius: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addToCartBtn:hover {
+  background-color: #fafafa;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.applePayBtn {
+  width: 100%;
+  padding: 18px;
+  background-color: #000000;
   color: #ffffff;
   border: none;
   border-radius: 0;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease;
-  margin-top: 16px;
 }
 
-.addToCartBtn:hover {
-  background-color: #333;
+.applePayBtn:hover {
+  background-color: #222;
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }

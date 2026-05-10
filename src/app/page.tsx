@@ -416,7 +416,7 @@ export default function ProductPage() {
           </motion.div>
 
           {/* Promo Note & CTA */}
-          <div style={{ marginTop: "16px", width: "100%", maxWidth: "500px" }}>
+          <div style={{ marginTop: "16px", width: "100%", maxWidth: "500px", display: "flex", flexDirection: "column", gap: "12px" }}>
             <p style={{ fontSize: "0.85rem", color: "#b45309", marginBottom: "8px", fontWeight: "600", textAlign: "center", width: "100%" }}>
               Réduction réservée aux 200 premières précommandes
             </p>
@@ -427,6 +427,14 @@ export default function ProductPage() {
               className={styles.addToCartBtn}
             >
               Ajouter au panier - 29,90 €/mois
+            </motion.button>
+            <motion.button 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className={styles.applePayBtn}
+            >
+              Acheter avec <span style={{ fontSize: '1.2rem', marginLeft: '4px', marginRight: '4px', position: 'relative', top: '-1px' }}></span> Pay
             </motion.button>
           </div>
         </div>
