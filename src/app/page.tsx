@@ -17,7 +17,6 @@ import {
   Smartphone,
   PhoneCall,
   Menu,
-  Search,
   ArrowRight
 } from "lucide-react";
 import styles from "./page.module.css";
@@ -64,7 +63,6 @@ export default function ProductPage() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
     });
@@ -123,9 +121,7 @@ export default function ProductPage() {
               <div className={styles.flagWhite} />
               <div className={styles.flagRed} />
             </div>
-            <button className={styles.iconBtn}>
-              <Search size={22} />
-            </button>
+
             <button className={styles.iconBtn}>
               <ShoppingCart size={22} />
             </button>
