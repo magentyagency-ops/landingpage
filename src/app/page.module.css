@@ -109,6 +109,9 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .productInfo {
+    padding: 0 24px;
+  }
 }
 
 .imageGallery {
