@@ -26,7 +26,12 @@ export default function ProductPage() {
   const [duration, setDuration] = useState("12 mois");
   const [purchaseType, setPurchaseType] = useState("abonnement");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [mainImage, setMainImage] = useState("/c6677736-fff9-4078-a76f-30ab9ab01e68.png");
+  const productImages = [
+    "/c6677736-fff9-4078-a76f-30ab9ab01e68.png",
+    "/uploads/pillbox-full.png",
+    "/uploads/pillbox-detail.png"
+  ];
 
   const videoList = [
     "/videos/0509_compressed.m4v",
@@ -89,7 +94,7 @@ export default function ProductPage() {
             style={{ position: "relative" }}
           >
             <img 
-              src="/c6677736-fff9-4078-a76f-30ab9ab01e68.png" 
+              src={mainImage} 
               alt="Pillqare Product" 
               style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "0" }} 
             />
@@ -143,8 +148,19 @@ export default function ProductPage() {
             </div>
           </motion.div>
           <div className={styles.thumbnailGallery}>
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className={styles.thumbnailPlaceholder} />
+            {productImages.map((img, i) => (
+              <div 
+                key={i} 
+                className={`${styles.thumbnailPlaceholder} ${mainImage === img ? styles.activeThumbnail : ''}`}
+                onClick={() => setMainImage(img)}
+                style={{ 
+                  backgroundImage: `url(${img})`, 
+                  backgroundSize: 'cover', 
+                  backgroundPosition: 'center', 
+                  cursor: 'pointer',
+                  border: mainImage === img ? '2px solid #3b82f6' : '1px solid #ddd'
+                }}
+              />
             ))}
           </div>
         </div>
