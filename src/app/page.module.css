@@ -196,6 +196,10 @@
 }
 
 @media (max-width: 768px) {
+  .infoBanner {
+    padding: 10px 0;
+    min-height: auto;
+  }
   .infoBannerContent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -207,6 +211,17 @@
   }
   .infoBadge:nth-child(even) {
     justify-self: end;
+  }
+  .infoBadge {
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+  .infoBadge svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .infoBadge img {
+    width: 20px !important;
   }
 }
 
