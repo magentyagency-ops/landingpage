@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Lenis from "lenis";
 import { 
   Star, 
   CheckCircle2, 
@@ -54,6 +55,31 @@ export default function ProductPage() {
     }
     return () => clearInterval(interval);
   }, [activeImageIndex, lightCycleImages.length]);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   const currentDisplayImage = activeImageIndex === 0 ? lightCycleImages[lightCycleIndex] : productImages[activeImageIndex];
 
@@ -615,9 +641,9 @@ export default function ProductPage() {
               <video
                 src={activeVideo}
                 autoPlay
-                controls
+                loop
                 playsInline
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }}
               />
             </motion.div>
           </motion.div>

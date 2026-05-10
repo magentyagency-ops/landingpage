@@ -6,7 +6,7 @@
 
 .header {
   position: sticky;
-  top: 0;
+  top: 32px; /* Adjust based on announcementBar height */
   z-index: 50;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
@@ -77,11 +77,17 @@
 
 /* Marquee Announcement */
 .announcementBar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background-color: #1e293b;
   color: white;
   padding: 6px 0;
+  height: 32px;
   overflow: hidden;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
 .marqueeContent {
@@ -567,7 +573,13 @@
   }
   .timelineContent {
     margin-left: 0;
+    margin-top: 0; /* Reset the negative margin on mobile */
     max-width: 100%;
+  }
+  .timelineTitle {
+    font-size: 1.3rem;
+    white-space: normal; /* Allow wrapping on mobile */
+    text-shadow: none; /* Shadow less necessary on mobile layout */
   }
 }
 
