@@ -210,13 +210,7 @@
   }
 }
 
-@media (max-width: 480px) {
-  .infoBannerContent {
-    grid-template-columns: 1fr;
-    width: max-content;
-    margin: 0 auto;
-  }
-}
+
 
 .infoBadge {
   display: flex;
