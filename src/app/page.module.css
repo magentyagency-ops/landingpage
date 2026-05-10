@@ -216,7 +216,7 @@
     justify-self: end;
   }
   .infoBadge {
-    font-size: 0.48rem;
+    font-size: 0.42rem;
     gap: 4px;
   }
   .infoBadge svg {
