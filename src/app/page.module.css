@@ -216,7 +216,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px 4px; /* small horizontal gap */
-    padding: 0 10px; /* less padding to give more space to content */
+    padding: 0 20px;
   }
   .infoBadge:nth-child(odd) {
     justify-self: start;
