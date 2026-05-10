@@ -195,19 +195,36 @@
   padding: 0 24px;
 }
 
+.bannerItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
 @media (max-width: 768px) {
   .infoBannerContent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+    justify-items: start;
+  }
+  .bannerItem {
+    font-size: 0.8rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .infoBannerContent {
     grid-template-columns: 1fr;
     width: max-content;
     margin: 0 auto;
+    gap: 12px;
+  }
+  .bannerItem {
+    font-size: 0.85rem;
   }
 }
 

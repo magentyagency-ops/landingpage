@@ -218,25 +218,25 @@ export default function ProductPage() {
 
             <div className={styles.infoBanner}>
               <div className={styles.infoBannerContent}>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", fontWeight: "600" }}>
-                  <img src="/pharmacie.jpg" alt="Pharmacie" style={{ width: "24px", height: "auto" }} />
-                  Approuvé par les pharmaciens
+                <div className={styles.bannerItem}>
+                  <img src="/pharmacie.jpg" alt="Pharmacie" style={{ width: "24px", height: "auto", flexShrink: 0 }} />
+                  <span>Approuvé par les pharmaciens</span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", fontWeight: "600" }}>
-                  <BellRing size={20} color="#3b82f6" />
-                  Alertes instantanées
+                <div className={styles.bannerItem}>
+                  <BellRing size={20} color="#3b82f6" style={{ flexShrink: 0 }} />
+                  <span>Alertes instantanées</span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", fontWeight: "600" }}>
-                  <PhoneCall size={20} color="#f59e0b" />
-                  Assistance 24h/24
+                <div className={styles.bannerItem}>
+                  <PhoneCall size={20} color="#f59e0b" style={{ flexShrink: 0 }} />
+                  <span>Assistance 24h/24</span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", fontWeight: "600" }}>
-                  <div className={styles.flagIcon} style={{ border: 'none', width: '24px', height: '16px' }}>
+                <div className={styles.bannerItem}>
+                  <div className={styles.flagIcon} style={{ border: 'none', width: '24px', height: '16px', flexShrink: 0 }}>
                     <div className={styles.flagBlue} />
                     <div className={styles.flagWhite} />
                     <div className={styles.flagRed} />
                   </div>
-                  Fabriqué en France
+                  <span>Fabriqué en France</span>
                 </div>
               </div>
             </div>
