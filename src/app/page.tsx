@@ -117,15 +117,26 @@ export default function ProductPage() {
             className={styles.mainImagePlaceholder}
             style={{ position: "relative" }}
           >
-            <motion.img 
-              key={currentDisplayImage}
-              src={currentDisplayImage} 
-              alt="Pillqare Product" 
-              initial={{ opacity: 0.8 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "0" }} 
-            />
+            <AnimatePresence initial={false}>
+              <motion.img 
+                key={currentDisplayImage}
+                src={currentDisplayImage} 
+                alt="Pillqare Product" 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                style={{ 
+                  width: "100%", 
+                  height: "100%", 
+                  objectFit: "cover", 
+                  borderRadius: "0",
+                  position: "absolute",
+                  top: 0,
+                  left: 0
+                }} 
+              />
+            </AnimatePresence>
             <div 
               style={{ 
                 position: "absolute", 
