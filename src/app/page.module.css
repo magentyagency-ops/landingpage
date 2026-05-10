@@ -1,0 +1,502 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 12px 0;
+}
+
+.headerContent {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.logo {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: none;
+}
+
+.leftNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.rightNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  color: #1a1a1a;
+  transition: opacity 0.2s;
+}
+
+.iconBtn:hover {
+  opacity: 0.7;
+}
+
+.flagIcon {
+  width: 22px;
+  height: 15px;
+  display: flex;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.flagBlue { width: 33.33%; background-color: #002395; }
+.flagWhite { width: 33.33%; background-color: #ffffff; }
+.flagRed { width: 33.33%; background-color: #ed2939; }
+
+/* Marquee Announcement */
+.announcementBar {
+  background-color: #1e293b;
+  color: white;
+  padding: 6px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marqueeContent {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 30s linear infinite;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+@keyframes marquee {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+
+.productSection {
+  padding: 0 0 64px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+@media (max-width: 900px) {
+  .productSection {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.imageGallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mainImagePlaceholder {
+  width: 100%;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.thumbnailGallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.thumbnailPlaceholder {
+  aspect-ratio: 1;
+  background-color: #f5f3ef;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.thumbnailPlaceholder:hover {
+  background-color: #ebe7de;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+  align-items: center;
+}
+
+.productTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.productSubtitle {
+  font-size: 1.25rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.infoBanner {
+  background-color: #f8f6f1;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  min-height: 60px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 16px;
+  z-index: 1;
+}
+
+.reviews {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #4a4a4a;
+  margin-left: -40px;
+}
+
+.stars {
+  display: flex;
+  color: #eab308;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+
+.benefitsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.benefitIcon {
+  color: #4ade80;
+}
+
+.optionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.optionLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.optionBtn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e5e5e5;
+  background: transparent;
+  border-radius: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.optionBtn.active {
+  border-color: #1a1a1a;
+  color: #1a1a1a;
+  background: rgba(26, 26, 26, 0.02);
+}
+
+.purchaseType {
+  border: 2px solid #e5e5e5;
+  border-radius: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.purchaseType.active {
+  border-color: #22c55e;
+  background-color: rgba(34, 197, 94, 0.02);
+}
+
+.purchaseTypeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.purchaseTypeTitle {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.purchaseTypePrice {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.discountBadge {
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 4px 8px;
+  border-radius: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.addToCartBtn {
+  width: 100%;
+  padding: 18px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 16px;
+}
+
+.addToCartBtn:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Features Banner */
+.featuresBanner {
+  background-color: #f8f6f1;
+  padding: 40px 0;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.featureIcon {
+  width: 48px;
+  height: 48px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  color: #1a1a1a;
+}
+
+.featureTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Content Section */
+.contentSection {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 24px;
+  background-color: #f8f6f1;
+  padding: 32px;
+  border-radius: 0;
+  transition: transform 0.3s ease;
+}
+
+.timelineItem:hover {
+  transform: translateY(-4px);
+}
+
+.timelineItem.recommended {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.timelineItem.recommended .timelineDesc {
+  color: #e5e5e5;
+}
+
+.timelineNumber {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #d4d0c5;
+  line-height: 1;
+}
+
+.timelineItem.recommended .timelineNumber {
+  color: #4ade80;
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timelineTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.timelineDesc {
+  font-size: 1.05rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+
+/* FAQ */
+.faqSection {
+  padding: 80px 0;
+  background-color: #f8f6f1;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  background: #ffffff;
+  border-radius: 0;
+  padding: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.faqQuestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.faqAnswer {
+  margin-top: 16px;
+  color: #4a4a4a;
+  line-height: 1.6;
+}
