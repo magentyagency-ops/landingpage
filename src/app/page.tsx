@@ -217,7 +217,7 @@ export default function ProductPage() {
             </div>
 
             <div className={styles.infoBanner}>
-              <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "16px", padding: "0 24px" }}>
+              <div className={styles.infoBannerContent}>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", fontWeight: "600" }}>
                   <img src="/pharmacie.jpg" alt="Pharmacie" style={{ width: "24px", height: "auto" }} />
                   Approuvé par les pharmaciens
