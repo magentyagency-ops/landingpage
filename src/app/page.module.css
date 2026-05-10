@@ -197,13 +197,13 @@
 
 @media (max-width: 768px) {
   .infoBanner {
-    padding: 6px 0;
+    padding: 16px 0;
     min-height: auto;
   }
   .infoBannerContent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 4px 16px;
+    gap: 8px 16px;
     padding: 0 16px;
   }
   .infoBadge:nth-child(odd) {
@@ -213,7 +213,7 @@
     justify-self: end;
   }
   .infoBadge {
-    font-size: 0.58rem;
+    font-size: 0.55rem;
     gap: 2px;
   }
   .infoBadge svg {
