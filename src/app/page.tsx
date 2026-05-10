@@ -448,7 +448,7 @@ export default function ProductPage() {
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>
-              Comment fonctionne Pillqare ?
+              Comment fonctionne<br />PillQare ?
             </h2>
 
           </div>
