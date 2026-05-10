@@ -191,23 +191,33 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
   padding: 0 24px;
 }
 
-@media (max-width: 768px) {
+.infoGroup {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
   .infoBannerContent {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
     gap: 16px;
+  }
+  .infoGroup {
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
 @media (max-width: 480px) {
-  .infoBannerContent {
-    grid-template-columns: 1fr;
-    width: max-content;
-    margin: 0 auto;
+  .infoGroup {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
