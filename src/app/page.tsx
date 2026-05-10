@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
+import Link from "next/link";
 import { 
   Star, 
   CheckCircle2, 
@@ -560,25 +561,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* Minimal Footer to match the texts without breaking the main layout structure */}
-      <footer style={{ backgroundColor: "#f8f6f1", padding: "40px 0", borderTop: "1px solid rgba(0,0,0,0.05)", marginTop: "auto" }}>
-        <div className={styles.container}>
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "24px" }}>
-            <nav style={{ display: "flex", gap: "16px", flexWrap: "wrap", fontSize: "0.9rem", color: "#4a4a4a" }}>
-              <a href="#" style={{ textDecoration: "none", color: "inherit" }}>FAQ</a>
-              <a href="#" style={{ textDecoration: "none", color: "inherit" }}>Blog</a>
-              <a href="#" style={{ textDecoration: "none", color: "inherit" }}>Contact</a>
-              <a href="#" style={{ textDecoration: "none", color: "inherit" }}>Guide d'utilisation</a>
-              <a href="#" style={{ textDecoration: "none", color: "inherit" }}>Politique de confidentialité</a>
-              <a href="#" style={{ textDecoration: "none", color: "inherit" }}>Mentions légales</a>
-              <a href="#" style={{ textDecoration: "none", color: "inherit" }}>CGV</a>
-            </nav>
-            <div style={{ fontSize: "0.85rem", color: "#666" }}>
-              © 2026 - Pillqare - Propulsé par Shopify
-            </div>
-          </div>
-        </div>
-      </footer>
+
 
       {/* Video Modal */}
       <AnimatePresence>
@@ -653,6 +636,26 @@ export default function ProductPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <footer className={styles.mainFooter}>
+        <div className={styles.container}>
+          <div className={styles.footerContent}>
+            <div className={styles.footerBranding}>
+              <img src="/logo.png" alt="Pillqare Logo" style={{ height: "40px", width: "auto", marginBottom: "16px" }} />
+              <p>Le pilulier intelligent qui veille sur vous et vos proches.</p>
+            </div>
+            <div className={styles.footerLinks}>
+              <Link href="/mentions-legales">Mentions légales</Link>
+              <a href="#">Politique de confidentialité</a>
+              <a href="#">CGV</a>
+              <a href="#">Contact</a>
+            </div>
+          </div>
+          <div className={styles.footerBottom}>
+            <p>© 2026 PIILZ SAS. Tous droits réservés.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
