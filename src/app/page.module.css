@@ -191,33 +191,30 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 16px;
   padding: 0 24px;
 }
 
-.infoGroup {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .infoBannerContent {
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+    padding: 0 16px;
   }
-  .infoGroup {
-    gap: 16px;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
+  .infoBadge:nth-child(odd) {
+    justify-self: start;
+  }
+  .infoBadge:nth-child(even) {
+    justify-self: end;
   }
 }
 
 @media (max-width: 480px) {
-  .infoGroup {
-    flex-direction: column;
-    gap: 12px;
+  .infoBannerContent {
+    grid-template-columns: 1fr;
+    width: max-content;
+    margin: 0 auto;
   }
 }
 
