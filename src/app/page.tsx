@@ -218,25 +218,25 @@ export default function ProductPage() {
 
             <div className={styles.infoBanner}>
               <div className={styles.infoBannerContent}>
-                <div className={styles.bannerItem}>
-                  <img src="/pharmacie.jpg" alt="Pharmacie" style={{ width: "24px", height: "auto", flexShrink: 0 }} />
-                  <span>Approuvé par les pharmaciens</span>
+                <div className={styles.infoBadge}>
+                  <img src="/pharmacie.jpg" alt="Pharmacie" style={{ width: "24px", height: "auto" }} />
+                  Approuvé par les pharmaciens
                 </div>
-                <div className={styles.bannerItem}>
-                  <BellRing size={20} color="#3b82f6" style={{ flexShrink: 0 }} />
-                  <span>Alertes instantanées</span>
+                <div className={styles.infoBadge}>
+                  <BellRing size={20} color="#3b82f6" />
+                  Alertes instantanées
                 </div>
-                <div className={styles.bannerItem}>
-                  <PhoneCall size={20} color="#f59e0b" style={{ flexShrink: 0 }} />
-                  <span>Assistance 24h/24</span>
+                <div className={styles.infoBadge}>
+                  <PhoneCall size={20} color="#f59e0b" />
+                  Assistance 24h/24
                 </div>
-                <div className={styles.bannerItem}>
-                  <div className={styles.flagIcon} style={{ border: 'none', width: '24px', height: '16px', flexShrink: 0 }}>
+                <div className={styles.infoBadge}>
+                  <div className={styles.flagIcon} style={{ border: 'none', width: '24px', height: '16px' }}>
                     <div className={styles.flagBlue} />
                     <div className={styles.flagWhite} />
                     <div className={styles.flagRed} />
                   </div>
-                  <span>Fabriqué en France</span>
+                  Fabriqué en France
                 </div>
               </div>
             </div>
