@@ -29,10 +29,10 @@ export default function ProductPage() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   const videoList = [
-    "/videos/0509 2.MOV",
-    "/videos/0218-copy(1) 2.MOV",
-    "/videos/0314 2.MOV",
-    "/videos/0218 (1).mov"
+    "https://ttkee5qurrk3aw45.public.blob.vercel-storage.com/videos/0509%202.MOV",
+    "https://ttkee5qurrk3aw45.public.blob.vercel-storage.com/videos/0218-copy%281%29%202.MOV",
+    "https://ttkee5qurrk3aw45.public.blob.vercel-storage.com/videos/0314%202.MOV",
+    "https://ttkee5qurrk3aw45.public.blob.vercel-storage.com/videos/0218%20%281%29.mov"
   ];
 
   const toggleFaq = (index: number) => {
