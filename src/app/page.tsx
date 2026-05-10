@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Star, 
@@ -26,12 +26,36 @@ export default function ProductPage() {
   const [duration, setDuration] = useState("12 mois");
   const [purchaseType, setPurchaseType] = useState("abonnement");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [mainImage, setMainImage] = useState("/c6677736-fff9-4078-a76f-30ab9ab01e68.png");
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [lightCycleIndex, setLightCycleIndex] = useState(0);
+
   const productImages = [
     "/c6677736-fff9-4078-a76f-30ab9ab01e68.png",
     "/uploads/pillbox-full.png",
-    "/uploads/pillbox-detail.png"
+    "/uploads/pillbox-detail.png",
+    "/uploads/pillbox-contents.png"
   ];
+
+  const lightCycleImages = [
+    "/c6677736-fff9-4078-a76f-30ab9ab01e68.png",
+    "/uploads/lighting/pillbox-light-1.png",
+    "/uploads/lighting/pillbox-light-2.png"
+  ];
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (activeImageIndex === 0) {
+      interval = setInterval(() => {
+        setLightCycleIndex((prev) => (prev + 1) % lightCycleImages.length);
+      }, 2000);
+    } else {
+      setLightCycleIndex(0);
+    }
+    return () => clearInterval(interval);
+  }, [activeImageIndex, lightCycleImages.length]);
+
+  const currentDisplayImage = activeImageIndex === 0 ? lightCycleImages[lightCycleIndex] : productImages[activeImageIndex];
 
   const videoList = [
     "/videos/0509_compressed.m4v",
@@ -93,10 +117,14 @@ export default function ProductPage() {
             className={styles.mainImagePlaceholder}
             style={{ position: "relative" }}
           >
-            <img 
-              src={mainImage} 
+            <motion.img 
+              key={currentDisplayImage}
+              src={currentDisplayImage} 
               alt="Pillqare Product" 
-              style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "0" }} 
+              initial={{ opacity: 0.8 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "0" }} 
             />
             <div 
               style={{ 
@@ -151,14 +179,14 @@ export default function ProductPage() {
             {productImages.map((img, i) => (
               <div 
                 key={i} 
-                className={`${styles.thumbnailPlaceholder} ${mainImage === img ? styles.activeThumbnail : ''}`}
-                onClick={() => setMainImage(img)}
+                className={`${styles.thumbnailPlaceholder} ${activeImageIndex === i ? styles.activeThumbnail : ''}`}
+                onClick={() => setActiveImageIndex(i)}
                 style={{ 
                   backgroundImage: `url(${img})`, 
                   backgroundSize: 'cover', 
                   backgroundPosition: 'center', 
                   cursor: 'pointer',
-                  border: mainImage === img ? '2px solid #3b82f6' : '1px solid #ddd'
+                  border: activeImageIndex === i ? '2px solid #3b82f6' : '1px solid #ddd'
                 }}
               />
             ))}
@@ -232,30 +260,7 @@ export default function ProductPage() {
               <span>4.9/5 sur 2104 avis</span>
             </div>
 
-            <div className={styles.infoBanner}>
-              <div className={styles.infoBannerContent}>
-                <div className={styles.infoBadge}>
-                  <img src="/pharmacie.jpg" alt="Pharmacie" style={{ width: "24px", height: "auto" }} />
-                  Approuvé par les pharmaciens
-                </div>
-                <div className={styles.infoBadge}>
-                  <BellRing size={20} color="#3b82f6" />
-                  Alertes instantanées
-                </div>
-                <div className={styles.infoBadge}>
-                  <PhoneCall size={20} color="#f59e0b" />
-                  Assistance 24h/24
-                </div>
-                <div className={styles.infoBadge}>
-                  <div className={styles.flagIcon} style={{ border: 'none', width: '24px', height: '16px' }}>
-                    <div className={styles.flagBlue} />
-                    <div className={styles.flagWhite} />
-                    <div className={styles.flagRed} />
-                  </div>
-                  Fabriqué en France
-                </div>
-              </div>
-            </div>
+
             {/* <p className={styles.productSubtitle} style={{ marginTop: '16px' }}>Une technologie discrète pour une sécurité totale.</p> */}
           </motion.div>
 
@@ -394,79 +399,59 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* Features Banner (Exact initial structure) */}
-      <section className={styles.featuresBanner}>
-        <div className={styles.container}>
-          <div className={styles.featuresGrid}>
-            <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>
-                <Award size={24} />
-              </div>
-              <span className={styles.featureTitle}>Distribution automatisée</span>
-            </div>
-            <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>
-                <Smartphone size={24} />
-              </div>
-              <span className={styles.featureTitle}>Suivi mobile à distance</span>
-            </div>
-            <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>
-                <BellRing size={24} />
-              </div>
-              <span className={styles.featureTitle}>Alertes SMS aux proches</span>
-            </div>
-            <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>
-                <ShieldCheck size={24} />
-              </div>
-              <span className={styles.featureTitle}>Télésurveillance 24/7</span>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* About Section / Timeline (Exact initial structure) */}
       <section className={styles.contentSection}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Comment fonctionne Pillqare ?</h2>
-            <p className={styles.sectionSubtitle}>
-              Un système intelligent conçu pour simplifier la prise de médicaments au quotidien, prévenir les erreurs, et rassurer l'entourage.
-            </p>
+            <h2 className={styles.sectionTitle}>
+              Comment fonctionne Pillqare ?
+            </h2>
+
           </div>
 
           <div className={styles.timeline}>
-            <h3 style={{ fontSize: "1.75rem", fontWeight: "700", textAlign: "center", marginBottom: "32px", color: "#1a1a1a" }}>
-              Vos bénéfices au quotidien
-            </h3>
+
             
             <div className={styles.timelineItem}>
-              <div className={styles.timelineNumber}>1</div>
+              <div className={styles.timelineIllustrationWrapper}>
+                <div className={styles.colorIllustrationPlaceholder}>
+                  <img src="/uploads/timeline/compressed/vert.png" alt="Pilulier Vert" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                </div>
+              </div>
               <div className={styles.timelineContent}>
-                <div className={styles.timelineTitle}>Rappels automatiques</div>
+                <div className={styles.timelineTitle}>Pilulier Vert : Distribution automatique</div>
                 <div className={styles.timelineDesc}>
-                  Finis les doutes et les oublis. L'appareil prépare et présente les médicaments au moment exact prescrit par le médecin.
+                  À l'heure exacte de la prise, le pilulier s'éclaire en vert et distribue automatiquement les médicaments de façon sécurisée.
                 </div>
               </div>
             </div>
 
             <div className={styles.timelineItem}>
-              <div className={styles.timelineNumber}>2</div>
+              <div className={styles.timelineIllustrationWrapper}>
+                <div className={styles.colorIllustrationPlaceholder}>
+                  <img src="/uploads/timeline/compressed/orange.png" alt="Pilulier Orange" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                </div>
+              </div>
               <div className={styles.timelineContent}>
-                <div className={styles.timelineTitle}>Suivi médical personnalisé</div>
+                <div className={styles.timelineTitle}>Pilulier Orange : Alerte Proche</div>
                 <div className={styles.timelineDesc}>
-                  L'application Pillqare vous permet de suivre l'historique des prises à distance, facilitant grandement le travail du personnel médical et des aidants.
+                  Si au bout de 30 minutes les médicaments ne sont toujours pas pris, le pilulier passe à l'orange et une alerte SMS est envoyée à un proche.
                 </div>
               </div>
             </div>
 
-            <div className={`${styles.timelineItem} ${styles.recommended}`}>
-              <div className={styles.timelineNumber}>3</div>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineIllustrationWrapper}>
+                <div className={styles.colorIllustrationPlaceholder}>
+                  <img src="/uploads/timeline/compressed/rouge.png" alt="Pilulier Rouge" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                </div>
+              </div>
               <div className={styles.timelineContent}>
-                <div className={styles.timelineTitle}>Support 24/7 & Télésurveillance</div>
+                <div className={styles.timelineTitle}>Pilulier Rouge : Intervention Support</div>
                 <div className={styles.timelineDesc}>
-                  Notre équipe est disponible 24h/24. Si le traitement n'est pas pris, nous veillons sur vous et alertons vos proches immédiatement par SMS.
+                  En cas d'oubli prolongé, le pilulier devient rouge. Notre support de télésurveillance vous appelle immédiatement pour s'occuper de la situation.
                 </div>
               </div>
             </div>
