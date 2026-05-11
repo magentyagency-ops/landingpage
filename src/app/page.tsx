@@ -33,7 +33,6 @@ export default function ProductPage() {
 
   const productImages = [
     "/c6677736-fff9-4078-a76f-30ab9ab01e68.png",
-    "/uploads/pillbox-full.png",
     "/uploads/pillbox-detail.png",
     "/uploads/pillbox-contents.png"
   ];
@@ -145,6 +144,16 @@ export default function ProductPage() {
                 key={currentDisplayImage}
                 src={currentDisplayImage} 
                 alt="Pillqare Product" 
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(e, info) => {
+                  const swipeThreshold = 50;
+                  if (info.offset.x > swipeThreshold) {
+                    setActiveImageIndex((prev) => (prev - 1 + productImages.length) % productImages.length);
+                  } else if (info.offset.x < -swipeThreshold) {
+                    setActiveImageIndex((prev) => (prev + 1) % productImages.length);
+                  }
+                }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -156,8 +165,10 @@ export default function ProductPage() {
                   borderRadius: "0",
                   position: "absolute",
                   top: 0,
-                  left: 0
+                  left: 0,
+                  cursor: "grab"
                 }} 
+                whileTap={{ cursor: "grabbing" }}
               />
             </AnimatePresence>
             <div 
