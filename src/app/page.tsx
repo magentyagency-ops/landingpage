@@ -440,14 +440,15 @@ export default function ProductPage() {
             >
               Ajouter au panier - 29,90 €/mois
             </motion.button>
-            <motion.button 
+            <motion.a
+              href="https://www.pillqare.com/checkouts/cn/hWNC7GaA1YUiT26zvPIZUauZ/fr-fr?_r=AQABJaQI5FDZm_ViqfB-jByb38XU-bNqMuSV7PUe0vMl4Xo"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
               className={styles.applePayBtn}
             >
-              Acheter avec <span style={{ fontSize: '1.2rem', marginLeft: '4px', marginRight: '4px', position: 'relative', top: '-1px' }}></span> Pay
-            </motion.button>
+              Acheter maintenant
+            </motion.a>
           </div>
         </div>
       </section>
