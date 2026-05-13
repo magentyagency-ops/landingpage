@@ -3,28 +3,17 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
+import Image from "next/image";
 import Link from "next/link";
 import { 
   Star, 
-  CheckCircle2, 
-  Leaf, 
-  FlaskConical, 
-  Award, 
-  ShieldCheck,
   ChevronDown,
   ShoppingCart,
-  Tv,
-  BellRing,
-  Smartphone,
-  PhoneCall,
-  Menu,
   ArrowRight
 } from "lucide-react";
 import styles from "./page.module.css";
 
 export default function ProductPage() {
-  const [format, setFormat] = useState("standard");
-  const [duration, setDuration] = useState("12 mois");
   const [purchaseType, setPurchaseType] = useState("abonnement");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
@@ -44,14 +33,14 @@ export default function ProductPage() {
   ];
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (activeImageIndex === 0) {
-      interval = setInterval(() => {
-        setLightCycleIndex((prev) => (prev + 1) % lightCycleImages.length);
-      }, 2000);
-    } else {
-      setLightCycleIndex(0);
+    if (activeImageIndex !== 0) {
+      return;
     }
+
+    const interval = setInterval(() => {
+      setLightCycleIndex((prev) => (prev + 1) % lightCycleImages.length);
+    }, 2000);
+
     return () => clearInterval(interval);
   }, [activeImageIndex, lightCycleImages.length]);
 
@@ -105,14 +94,10 @@ export default function ProductPage() {
       {/* Header (Exact structure as initial) */}
       <header className={styles.header}>
         <div className={styles.headerContent}>
-          <div className={styles.leftNav}>
-            <button className={styles.iconBtn}>
-              <Menu size={24} />
-            </button>
-          </div>
+          <div className={styles.leftNav} />
 
-          <a href="#" className={styles.logo}>
-            <img src="/logo.png" alt="Pillqare Logo" style={{ height: "50px", width: "auto" }} />
+          <a href="https://pillqare.com" className={styles.logo}>
+            <Image src="/logo.png" alt="Pillqare Logo" width={150} height={50} style={{ height: "50px", width: "auto" }} />
           </a>
 
           <div className={styles.rightNav}>
@@ -199,9 +184,9 @@ export default function ProductPage() {
                 zIndex: 10
               }}
             >
-              <img src="/log/ncvb.png" alt="Cert 3" style={{ height: "60px", width: "auto" }} />
-              <img src="/log/5.png" alt="Cert 1" style={{ height: "60px", width: "auto" }} />
-              <img src="/log/6.png" alt="Cert 2" style={{ height: "60px", width: "auto" }} />
+              <Image src="/log/ncvb.png" alt="Cert 3" width={107} height={60} style={{ height: "60px", width: "auto" }} />
+              <Image src="/log/5.png" alt="Cert 1" width={58} height={60} style={{ height: "60px", width: "auto" }} />
+              <Image src="/log/6.png" alt="Cert 2" width={58} height={60} style={{ height: "60px", width: "auto" }} />
             </div>
             <div 
               style={{ 
@@ -217,7 +202,7 @@ export default function ProductPage() {
                 zIndex: 10
               }}
             >
-              <img src="/vusur.png" alt="Vusur Badge" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <Image src="/vusur.png" alt="Vusur Badge" fill sizes="80px" style={{ objectFit: "cover" }} />
             </div>
           </motion.div>
           <div className={styles.thumbnailGallery}>
@@ -471,13 +456,13 @@ export default function ProductPage() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineIllustrationWrapper}>
                 <div className={styles.colorIllustrationPlaceholder}>
-                  <img src="/uploads/timeline/compressed/vert.png" alt="Pilulier Vert" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                  <Image src="/uploads/timeline/compressed/vert.png" alt="Pilulier Vert" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                 </div>
               </div>
               <div className={styles.timelineContent}>
                 <div className={styles.timelineTitle}>Pilulier Vert : Distribution automatique</div>
                 <div className={styles.timelineDesc}>
-                  À l'heure exacte de la prise, le pilulier s'éclaire en vert et distribue automatiquement les médicaments de façon sécurisée.
+                  À l&apos;heure exacte de la prise, le pilulier s&apos;éclaire en vert et distribue automatiquement les médicaments de façon sécurisée.
                 </div>
               </div>
             </div>
@@ -485,13 +470,13 @@ export default function ProductPage() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineIllustrationWrapper}>
                 <div className={styles.colorIllustrationPlaceholder}>
-                  <img src="/uploads/timeline/compressed/orange.png" alt="Pilulier Orange" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                  <Image src="/uploads/timeline/compressed/orange.png" alt="Pilulier Orange" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                 </div>
               </div>
               <div className={styles.timelineContent}>
                 <div className={styles.timelineTitle}>Pilulier Orange : Alerte Proche</div>
                 <div className={styles.timelineDesc}>
-                  Si au bout de 30 minutes les médicaments ne sont toujours pas pris, le pilulier passe à l'orange et une alerte SMS est envoyée à un proche.
+                  Si au bout de 30 minutes les médicaments ne sont toujours pas pris, le pilulier passe à l&apos;orange et une alerte SMS est envoyée à un proche.
                 </div>
               </div>
             </div>
@@ -499,13 +484,13 @@ export default function ProductPage() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineIllustrationWrapper}>
                 <div className={styles.colorIllustrationPlaceholder}>
-                  <img src="/uploads/timeline/compressed/rouge.png" alt="Pilulier Rouge" style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                  <Image src="/uploads/timeline/compressed/rouge.png" alt="Pilulier Rouge" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                 </div>
               </div>
               <div className={styles.timelineContent}>
                 <div className={styles.timelineTitle}>Pilulier Rouge : Intervention Support</div>
                 <div className={styles.timelineDesc}>
-                  En cas d'oubli prolongé, le pilulier devient rouge. Notre support de télésurveillance vous appelle immédiatement pour s'occuper de la situation.
+                  En cas d&apos;oubli prolongé, le pilulier devient rouge. Notre support de télésurveillance vous appelle immédiatement pour s&apos;occuper de la situation.
                 </div>
               </div>
             </div>
@@ -519,7 +504,7 @@ export default function ProductPage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Questions Fréquentes</h2>
             <p className={styles.sectionSubtitle}>
-              Retrouvez l'essentiel à savoir sur votre futur pilulier Pillqare.
+              Retrouvez l&apos;essentiel à savoir sur votre futur pilulier Pillqare.
             </p>
           </div>
 
@@ -653,7 +638,7 @@ export default function ProductPage() {
         <div className={styles.container}>
           <div className={styles.footerContent}>
             <div className={styles.footerBranding}>
-              <img src="/logo.png" alt="Pillqare Logo" style={{ height: "40px", width: "auto", marginBottom: "16px" }} />
+              <Image src="/logo.png" alt="Pillqare Logo" width={120} height={40} style={{ height: "40px", width: "auto", marginBottom: "16px" }} />
               <p>Le pilulier intelligent qui veille sur vous et vos proches.</p>
             </div>
             <div className={styles.footerLinks}>

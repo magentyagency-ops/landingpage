@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "../page.module.css";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -9,7 +8,7 @@ export default function LegalNotice() {
     <div style={{ backgroundColor: "#ffffff", color: "#1a1a1a", minHeight: "100vh", fontFamily: "sans-serif", padding: "40px 24px" }}>
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "8px", color: "#666", textDecoration: "none", marginBottom: "40px", fontSize: "0.9rem" }}>
-          <ArrowLeft size={18} /> Retour à l'accueil
+          <ArrowLeft size={18} /> Retour à l&apos;accueil
         </Link>
 
         <h1 style={{ fontSize: "2.5rem", fontWeight: "800", marginBottom: "24px", letterSpacing: "-0.02em" }}>Mentions légales</h1>
