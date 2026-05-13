@@ -21,15 +21,15 @@ export default function ProductPage() {
   const [lightCycleIndex, setLightCycleIndex] = useState(0);
 
   const productImages = [
-    "/c6677736-fff9-4078-a76f-30ab9ab01e68.png",
-    "/uploads/pillbox-detail.png",
-    "/uploads/pillbox-contents.png"
+    "/optimized/product-main.jpg",
+    "/optimized/pillbox-detail.jpg",
+    "/optimized/pillbox-contents.jpg"
   ];
 
   const lightCycleImages = [
-    "/c6677736-fff9-4078-a76f-30ab9ab01e68.png",
-    "/uploads/lighting/pillbox-light-1.png",
-    "/uploads/lighting/pillbox-light-2.png"
+    "/optimized/product-main.jpg",
+    "/optimized/pillbox-light-1.jpg",
+    "/optimized/pillbox-light-2.jpg"
   ];
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function ProductPage() {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
@@ -71,10 +71,10 @@ export default function ProductPage() {
   const currentDisplayImage = activeImageIndex === 0 ? lightCycleImages[lightCycleIndex] : productImages[activeImageIndex];
 
   const videoList = [
-    "/videos/0509_compressed.m4v",
-    "/videos/0218_copy_compressed.m4v",
-    "/videos/0314_compressed.m4v",
-    "/videos/0218_1_compressed.m4v"
+    "/videos/optimized/0509.mp4",
+    "/videos/optimized/0218-copy.mp4",
+    "/videos/optimized/0314.mp4",
+    "/videos/optimized/0218-1.mp4"
   ];
 
   const toggleFaq = (index: number) => {
@@ -97,7 +97,7 @@ export default function ProductPage() {
           <div className={styles.leftNav} />
 
           <a href="https://pillqare.com" className={styles.logo}>
-            <Image src="/logo.png" alt="Pillqare Logo" width={150} height={50} style={{ height: "50px", width: "auto" }} />
+            <Image src="/optimized/logo.png" alt="Pillqare Logo" width={150} height={50} style={{ height: "50px", width: "auto" }} loading="eager" />
           </a>
 
           <div className={styles.rightNav}>
@@ -118,10 +118,8 @@ export default function ProductPage() {
       <section className={`${styles.container} ${styles.productSection}`}>
         {/* Left: Images */}
         <div className={styles.imageGallery}>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={styles.mainImagePlaceholder}
+          <div
+            className={`${styles.mainImagePlaceholder} ${styles.animFadeInUp}`}
             style={{ position: "relative" }}
           >
             <AnimatePresence initial={false}>
@@ -184,9 +182,9 @@ export default function ProductPage() {
                 zIndex: 10
               }}
             >
-              <Image src="/log/ncvb.png" alt="Cert 3" width={107} height={60} style={{ height: "60px", width: "auto" }} />
-              <Image src="/log/5.png" alt="Cert 1" width={58} height={60} style={{ height: "60px", width: "auto" }} />
-              <Image src="/log/6.png" alt="Cert 2" width={58} height={60} style={{ height: "60px", width: "auto" }} />
+              <Image src="/optimized/ncvb.png" alt="Cert 3" width={107} height={60} style={{ height: "60px", width: "auto" }} />
+              <Image src="/optimized/cert-5.png" alt="Cert 1" width={58} height={60} style={{ height: "60px", width: "auto" }} />
+              <Image src="/optimized/cert-6.png" alt="Cert 2" width={58} height={60} style={{ height: "60px", width: "auto" }} />
             </div>
             <div 
               style={{ 
@@ -202,9 +200,9 @@ export default function ProductPage() {
                 zIndex: 10
               }}
             >
-              <Image src="/vusur.png" alt="Vusur Badge" fill sizes="80px" style={{ objectFit: "cover" }} />
+              <Image src="/optimized/vusur.jpg" alt="Vusur Badge" fill sizes="80px" style={{ objectFit: "cover" }} />
             </div>
-          </motion.div>
+          </div>
           <div className={styles.thumbnailGallery}>
             {productImages.map((img, i) => (
               <div 
@@ -225,11 +223,7 @@ export default function ProductPage() {
 
         {/* Right: Product Details (Preserving exact original structure) */}
         <div className={styles.productInfo}>
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-          >
+          <div className={styles.animFadeInLeft1}>
             <p style={{ fontSize: "0.85rem", color: "#22c55e", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "8px" }}>
               Sécurité, sérénité et autonomie
             </p>
@@ -292,7 +286,7 @@ export default function ProductPage() {
 
 
             {/* <p className={styles.productSubtitle} style={{ marginTop: '16px' }}>Une technologie discrète pour une sécurité totale.</p> */}
-          </motion.div>
+          </div>
 
           {/* <motion.div 
             initial={{ opacity: 0, x: 20 }}
@@ -363,11 +357,8 @@ export default function ProductPage() {
           </motion.div> */}
 
           {/* Purchase Type (Kept structure, adapted to Achat vs Location) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className={styles.optionsSection}
+          <div
+            className={`${styles.optionsSection} ${styles.animFadeInUp5}`}
             style={{ width: "100%", maxWidth: "500px" }}
           >
             <div 
@@ -410,30 +401,24 @@ export default function ProductPage() {
                 <p style={{ marginTop: "8px", color: "#666", fontSize: "0.75rem", fontStyle: "italic" }}>(une connexion internet est requise)</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Promo Note & CTA */}
           <div style={{ marginTop: "16px", width: "100%", maxWidth: "500px", display: "flex", flexDirection: "column", gap: "12px" }}>
             <p style={{ fontSize: "0.85rem", color: "#b45309", marginBottom: "8px", fontWeight: "600", textAlign: "center", width: "100%" }}>
               Réduction réservée aux 200 premières précommandes
             </p>
-            <motion.button 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className={styles.addToCartBtn}
+            <button
+              className={`${styles.addToCartBtn} ${styles.animFadeInUp6}`}
             >
               Ajouter au panier - 29,90 €/mois
-            </motion.button>
-            <motion.a
+            </button>
+            <a
               href="https://www.pillqare.com/checkouts/cn/hWNC7GaA1YUiT26zvPIZUauZ/fr-fr?_r=AQABJaQI5FDZm_ViqfB-jByb38XU-bNqMuSV7PUe0vMl4Xo"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className={styles.applePayBtn}
+              className={`${styles.applePayBtn} ${styles.animFadeInUp7}`}
             >
               Acheter maintenant
-            </motion.a>
+            </a>
           </div>
         </div>
       </section>
@@ -456,7 +441,7 @@ export default function ProductPage() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineIllustrationWrapper}>
                 <div className={styles.colorIllustrationPlaceholder}>
-                  <Image src="/uploads/timeline/compressed/vert.png" alt="Pilulier Vert" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                  <Image src="/optimized/timeline-vert.jpg" alt="Pilulier Vert" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                 </div>
               </div>
               <div className={styles.timelineContent}>
@@ -470,7 +455,7 @@ export default function ProductPage() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineIllustrationWrapper}>
                 <div className={styles.colorIllustrationPlaceholder}>
-                  <Image src="/uploads/timeline/compressed/orange.png" alt="Pilulier Orange" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                  <Image src="/optimized/timeline-orange.jpg" alt="Pilulier Orange" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                 </div>
               </div>
               <div className={styles.timelineContent}>
@@ -484,7 +469,7 @@ export default function ProductPage() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineIllustrationWrapper}>
                 <div className={styles.colorIllustrationPlaceholder}>
-                  <Image src="/uploads/timeline/compressed/rouge.png" alt="Pilulier Rouge" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                  <Image src="/optimized/timeline-rouge.jpg" alt="Pilulier Rouge" width={600} height={600} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
                 </div>
               </div>
               <div className={styles.timelineContent}>
@@ -564,6 +549,7 @@ export default function ProductPage() {
       <AnimatePresence>
         {activeVideo && (
           <motion.div
+            key="video-modal"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -638,7 +624,7 @@ export default function ProductPage() {
         <div className={styles.container}>
           <div className={styles.footerContent}>
             <div className={styles.footerBranding}>
-              <Image src="/logo.png" alt="Pillqare Logo" width={120} height={40} style={{ height: "40px", width: "auto", marginBottom: "16px" }} />
+              <Image src="/optimized/logo.png" alt="Pillqare Logo" width={120} height={40} style={{ height: "40px", width: "auto", marginBottom: "16px" }} />
               <p>Le pilulier intelligent qui veille sur vous et vos proches.</p>
             </div>
             <div className={styles.footerLinks}>
